@@ -1,0 +1,257 @@
+/* /frontend/src/nodes/nodes.css */
+
+/* ─── CSS Variables ─── */
+:root {
+    --bg-canvas: #0f1117;
+    --bg-node: #1a1d27;
+    --bg-node-header: #21253a;
+    --border-node: #2e3248;
+    --border-selected: #6366f1;
+    --text-primary: #e8eaf6;
+    --text-secondary: #8b8fa8;
+    --text-label: #b0b3c6;
+    --input-bg: #12151f;
+    --input-border: #2e3248;
+    --input-border-focus: #6366f1;
+    --shadow-node: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --shadow-selected: 0 0 0 2px #6366f1, 0 4px 24px rgba(99, 102, 241, 0.3);
+    --radius: 12px;
+    --radius-sm: 6px;
+}
+
+/* ─── Base Node Container ─── */
+.base-node {
+    background: var(--bg-node);
+    border: 1.5px solid var(--border-node);
+    border-radius: var(--radius);
+    min-width: 220px;
+    max-width: 320px;
+    box-shadow: var(--shadow-node);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: visible;
+}
+
+.base-node--selected {
+    border-color: var(--node-accent, var(--border-selected));
+    box-shadow: var(--shadow-selected);
+}
+
+/* ─── Header ─── */
+.base-node__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg-node-header);
+    border-bottom: 1px solid var(--border-node);
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-left: 4px solid var(--node-accent, #6366f1);
+}
+
+.base-node__icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.base-node__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.base-node__category {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--node-accent, #6366f1);
+    opacity: 0.85;
+}
+
+.base-node__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+/* ─── Body ─── */
+.base-node__body {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ─── Fields ─── */
+.base-node__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.base-node__label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-label);
+}
+
+.base-node__input {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 12px;
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s;
+    font-family: inherit;
+}
+
+.base-node__input:focus {
+    border-color: var(--node-accent, var(--input-border-focus));
+}
+
+.base-node__input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Textarea specific */
+textarea.base-node__input {
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.5;
+}
+
+/* Select specific */
+select.base-node__input {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b8fa8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+/* ─── Toolbar ─── */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #13151f;
+    border-bottom: 1px solid #1e2133;
+    align-items: center;
+}
+
+.toolbar__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #2e3248;
+    background: #1a1d27;
+    color: #c8cae0;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: grab;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    user-select: none;
+}
+
+.toolbar__btn:hover {
+    background: #21253a;
+    border-color: #6366f1;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.toolbar__btn:active {
+    cursor: grabbing;
+    transform: translateY(0);
+}
+
+.toolbar__icon {
+    font-size: 15px;
+}
+
+/* ─── Submit Button ─── */
+.submit-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.35);
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ─── Canvas ─── */
+.react-flow__pane {
+    background-color: var(--bg-canvas) !important;
+}
+
+.react-flow__background {
+    background-color: var(--bg-canvas) !important;
+}
+
+/* ─── Edges ─── */
+.react-flow__edge-path {
+    stroke: #6366f1 !important;
+    stroke-width: 2 !important;
+    opacity: 0.7;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+    opacity: 1;
+    stroke-width: 2.5 !important;
+}
+
+/* ─── MiniMap ─── */
+.react-flow__minimap {
+    background: #13151f !important;
+    border: 1px solid #2e3248 !important;
+    border-radius: 10px !important;
+}
+
+/* ─── Controls ─── */
+.react-flow__controls {
+    background: #1a1d27 !important;
+    border: 1px solid #2e3248 !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+
+.react-flow__controls-button {
+    background: #1a1d27 !important;
+    border: none !important;
+    color: #8b8fa8 !important;
+    fill: #8b8fa8 !important;
+}
+
+.react-flow__controls-button:hover {
+    background: #21253a !important;
+}
