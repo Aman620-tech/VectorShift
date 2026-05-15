@@ -350,7 +350,4 @@ This opens the automatic FastAPI documentation where you can test endpoints.
 
 ---
 
-*VectorShift Frontend Technical Assessment*"# VectorShift" 
-#   V e c t o r S h i f t  
- #   V e c t o r S h i f t  
- 
+*VectorShift Frontend Technical Assessment*
